@@ -119,3 +119,113 @@ Once the build progress bar is complete, the app will open automatically at:
 ```
 http://localhost:8081
 ```
+
+# Using the App
+
+
+You will land on the **onboarding screen**, where you complete a short guided introduction to the app.
+
+<img width="778" height="934" alt="image" src="https://github.com/user-attachments/assets/e79a0822-4a1a-4276-99ee-064dd9d56534" />
+
+---
+
+## 2. Complete Onboarding
+After completing the onboarding prompts, you will arrive on the **main home page**,
+
+<img width="664" height="1208" alt="image" src="https://github.com/user-attachments/assets/f5ac09e0-5aad-434e-9949-7de9b9e45941" />
+
+---
+
+## 3. Select a Lesson
+Click any lesson tile.  
+A modal will appear showing:
+
+- A brief description of the lesson
+- A “Start Lesson” button
+
+Start the lesson to continue.
+
+<img width="668" height="1168" alt="image" src="https://github.com/user-attachments/assets/29374495-159b-45ab-8463-6d69b3c17592" />
+
+
+---
+
+## 4. Game Type 1: Flashcard Game
+In the Flashcard game, you are shown a word or phrase.
+
+Your task:
+
+- **Tap the correct translation** from the multiple-choice options.
+
+<img width="672" height="1264" alt="image" src="https://github.com/user-attachments/assets/a8b508a0-25b6-4b06-a48e-1fbf9bb81555" />
+
+
+If you select the wrong answer:
+
+- A feedback modal appears showing the **correct answer**
+- You can continue the lesson after reviewing
+
+<img width="656" height="1260" alt="image" src="https://github.com/user-attachments/assets/40c3e7d0-7e42-4a1b-abd7-fbab34f625b1" />
+
+---
+
+## 5. Game Type 2: Dialogue Game
+The Dialogue game simulates a simple conversation.
+
+You are presented with:
+
+- A dialogue sentence with missing words
+- A **word bank** containing possible answers
+
+<img width="652" height="1250" alt="image" src="https://github.com/user-attachments/assets/b5f84534-638a-4019-968f-269006fea581" />
+
+<img width="656" height="1276" alt="image" src="https://github.com/user-attachments/assets/a24329a8-5922-4298-b4ff-8046139f93e9" />
+
+
+
+Your task:
+
+- **Tap the correct words from the word bank** to complete the sentence
+- Submit your choice to see whether your selection matches the correct Somali phrasing
+
+If your answer is incorrect:
+
+- A modal highlights the correct word choice
+- You can retry or continue to the next dialogue prompt
+
+<img width="652" height="1264" alt="image" src="https://github.com/user-attachments/assets/e6c8fc9c-c049-45b6-acbb-b420b26e01cc" />
+
+---
+
+## 6. Review Missed Questions
+After completing all the questions in the lesson, the app automatically identifies any items you answered incorrectly.
+
+You will see a **“Review what you missed”** screen.
+
+<img width="660" height="1258" alt="image" src="https://github.com/user-attachments/assets/64710ceb-ae49-4438-88cb-3f1921337b5b" />
+
+When you tap **Continue**, the app will replay only the questions you got wrong so you can try them again.  
+
+<img width="650" height="1272" alt="image" src="https://github.com/user-attachments/assets/2a788a3f-30c6-4476-9637-f631efc37292" />
+
+---
+
+## 7. Lesson Complete & Score Screen
+Once all missed questions have been reviewed, you will reach the **Lesson Complete** screen.
+
+This final screen displays:
+
+- **Your total score** for the lesson  
+- A **Continue** button to return to the main page  
+
+<img width="760" height="1208" alt="image" src="https://github.com/user-attachments/assets/0a209c49-fde8-4dca-8d0f-0b7834b1f5be" />
+
+---
+
+
+
+
+
+
+
+
