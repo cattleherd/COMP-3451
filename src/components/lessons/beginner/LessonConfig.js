@@ -76,6 +76,120 @@ const LessonConfig = {
           },
         },
       ],
+      TileMatchingGame: [
+        {
+          data: {
+            tiles: [
+              {
+                id: 1,
+                name: "Subax",
+                type: "label",
+                audio: "/assets/audio/Lesson1/subax.mp3",
+              },
+              {
+                id: 1,
+                name: "Morning",
+                type: "answer",
+              },
+
+              {
+                id: 2,
+                name: "Wanaagsan",
+                type: "label",
+                audio: "/assets/audio/Lesson1/wanaagsan.mp3",
+              },
+              {
+                id: 2,
+                name: "Good",
+                type: "answer",
+              },
+
+              {
+                id: 3,
+                name: "Nabad",
+                type: "label",
+                audio: "/assets/audio/Lesson1/nabad.mp3",
+              },
+              {
+                id: 3,
+                name: "Peace",
+                type: "answer",
+              },
+
+              {
+                id: 4,
+                name: "Fiican",
+                type: "label",
+                audio: "/assets/audio/Lesson1/fiican.mp3",
+              },
+              {
+                id: 4,
+                name: "Fine",
+                type: "answer",
+              },
+
+              {
+                id: 5,
+                name: "Waa",
+                type: "label",
+                audio: "/assets/audio/Lesson1/waa.mp3",
+              },
+              {
+                id: 5,
+                name: "It is",
+                type: "answer",
+              },
+
+              {
+                id: 6,
+                name: "Ma",
+                type: "label",
+                audio: "/assets/audio/Lesson1/ma.mp3",
+              },
+              {
+                id: 6,
+                name: "Is it..?",
+                type: "answer",
+              },
+
+              {
+                id: 7,
+                name: "waa",
+                type: "label",
+                audio: "/assets/audio/Lesson1/waa.mp3",
+              },
+              {
+                id: 7,
+                name: "it is",
+                type: "answer",
+              },
+
+              {
+                id: 8,
+                name: "ma",
+                type: "label",
+                audio: "/assets/audio/Lesson1/ma.mp3",
+              },
+              {
+                id: 8,
+                name: "is it … ?",
+                type: "answer",
+              },
+              {
+                id: 9,
+                name: "baa",
+                type: "label",
+                audio: "/assets/audio/Lesson1/ba.mp3",
+              },
+              {
+                id: 9,
+                name: "focus particle (indeed / really)",
+                type: "answer",
+              },
+            ],
+          },
+        },
+      ],
     },
   },
   Lesson2: {
@@ -156,13 +270,147 @@ const LessonConfig = {
           },
         },
       ],
+      TileMatchingGame: [
+        {
+          data: {
+            tiles: [
+              {
+                id: 4,
+                name: "Waan fiicanahay.",
+                type: "label",
+                audio: "/assets/audio/Lesson2/waan_fiicanahay.mp3",
+              },
+              {
+                id: 4,
+                name: "I am fine.",
+                type: "answer",
+              },
+              {
+                id: 5,
+                name: "Subax wanaagsan.",
+                type: "label",
+                audio: "/assets/audio/Lesson2/subax_wanaagsan.mp3",
+              },
+              {
+                id: 5,
+                name: "Good morning.",
+                type: "answer",
+              },
+              {
+                id: 6,
+                name: "Waryaa!",
+                type: "label",
+                audio: "/assets/audio/Lesson2/waryaa.mp3",
+              },
+              {
+                id: 6,
+                name: "Hey! (male form)",
+                type: "answer",
+              },
+              {
+                id: 7,
+                name: "Maryanay!",
+                type: "label",
+                audio: "/assets/audio/Lesson2/maryanay.mp3",
+              },
+              {
+                id: 7,
+                name: "Oh / Hey Maryan! (female)",
+                type: "answer",
+              },
+              {
+                id: 8,
+                name: "Yoonisow!",
+                type: "label",
+                audio: "/assets/audio/Lesson2/yoonisow.mp3",
+              },
+              {
+                id: 8,
+                name: "Oh / Hey Yoonis! (male)",
+                type: "answer",
+              },
+              {
+                id: 9,
+                name: "waa",
+                type: "label",
+                audio: "/assets/audio/Lesson2/waa.mp3",
+              },
+              {
+                id: 9,
+                name: "it is",
+                type: "answer",
+              },
+              {
+                id: 10,
+                name: "ma",
+                type: "label",
+                audio: "/assets/audio/Lesson2/ma.mp3",
+              },
+              {
+                id: 10,
+                name: "is it … ?",
+                type: "answer",
+              },
+              {
+                id: 11,
+                name: "sidee tahay?",
+                type: "label",
+                audio: "/assets/audio/Lesson2/sidee_tahay.mp3",
+              },
+              {
+                id: 11,
+                name: "how are you? (alternative form)",
+                type: "answer",
+              },
+            ],
+          },
+        },
+      ],
+      SentenceBuilder: [
+        {
+          data: {
+            items: [
+              {
+                prompt: "Waan fiicanahay",
+                translation: "I'm fine.",
+                filler: "thanks|really|okay",
+              },
+              {
+                prompt: "Adigu, sidee tahay?",
+                translation: "And you, how are you?",
+                filler: "doing|today|feeling",
+              },
+              {
+                prompt: "Subax wanaagsan.",
+                translation: "Good morning.",
+                filler: "evening|hello|there",
+              },
+              {
+                prompt: "Ma nabad baa?",
+                translation: "Are things well?",
+                filler: "okay|going|today",
+              },
+              {
+                prompt: "Waa nabad",
+                translation: "It is peace.",
+                filler: "sure|always|really",
+              },
+              {
+                prompt: "Iska warran",
+                translation: "How are you",
+                filler: "doing|feeling|now",
+              },
+            ],
+          },
+        },
+      ],
       TwoPeopleInteraction: [
         {
           data: {
             turns: [
               {
                 speaker: "CPU",
-                gender: "female", 
+                gender: "female",
                 isInteractive: false,
                 words: [
                   { word: "Faadumay,", translation: "Oh Faadumo," },
@@ -174,7 +422,7 @@ const LessonConfig = {
               },
               {
                 speaker: "Player",
-                gender: "female", 
+                gender: "female",
                 isInteractive: true,
                 missingWord: "nabad",
                 options: ["nabad", "fiicanahay", "tahay", "Adigu"],
@@ -182,7 +430,7 @@ const LessonConfig = {
                   { word: "Maryanay,", translation: "Oh Maryan," },
                   { word: "subax", translation: "morning" },
                   { word: "wanaagsan,", translation: "good," },
-                  { word: "ma" }, 
+                  { word: "ma" },
                   { word: "____" },
                   { word: "baa?" },
                 ],
@@ -199,7 +447,7 @@ const LessonConfig = {
               },
               {
                 speaker: "CPU",
-                gender: "female", 
+                gender: "female",
                 isInteractive: false,
                 words: [
                   { word: "Waa", translation: "It is" },
@@ -215,8 +463,8 @@ const LessonConfig = {
                 speaker: "Player",
                 gender: "female",
                 isInteractive: true,
-                missingWord: "fiicanahay.", 
-                options: ["fiicanahay.", "wanaagsan", "subax", "mahadsanid"], 
+                missingWord: "fiicanahay.",
+                options: ["fiicanahay.", "wanaagsan", "subax", "mahadsanid"],
                 promptWords: [
                   { word: "Alxamdulillah,", translation: "Praise be to God," },
                   { word: "waan", translation: "I am" },
@@ -306,6 +554,210 @@ const LessonConfig = {
                 prompt: "They",
                 translation: "Way",
                 options: ["Way", "Waynu", "Wuu", "Waan"],
+              },
+            ],
+          },
+        },
+      ],
+      TileMatchingGame: [
+        {
+          data: {
+            tiles: [
+              {
+                id: 1,
+                name: "Waan",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waan.mp3",
+              },
+              {
+                id: 1,
+                name: "I",
+                type: "answer",
+              },
+
+              {
+                id: 2,
+                name: "Waad",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waad.mp3",
+              },
+              {
+                id: 2,
+                name: "You (singular)",
+                type: "answer",
+              },
+
+              {
+                id: 3,
+                name: "Wuu",
+                type: "label",
+                audio: "/assets/audio/Lesson3/wuu.mp3",
+              },
+              {
+                id: 3,
+                name: "He / it (masc.)",
+                type: "answer",
+              },
+
+              {
+                id: 4,
+                name: "Way",
+                type: "label",
+                audio: "/assets/audio/Lesson3/way.mp3",
+              },
+              {
+                id: 4,
+                name: "She / it (fem.)",
+                type: "answer",
+              },
+
+              {
+                id: 5,
+                name: "Waynu",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waynu.mp3",
+              },
+              {
+                id: 5,
+                name: "We (me + you + others)",
+                type: "answer",
+              },
+
+              {
+                id: 6,
+                name: "Waannu",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waannu.mp3",
+              },
+              {
+                id: 6,
+                name: "We (me + my group, but NOT you)",
+                type: "answer",
+              },
+
+              {
+                id: 7,
+                name: "Waad",
+                type: "label",
+                audio: "/assets/audio/Lesson3/Waad.mp3",
+              },
+              {
+                id: 7,
+                name: "You (plural)",
+                type: "answer",
+              },
+
+              {
+                id: 8,
+                name: "Way",
+                type: "label",
+                audio: "/assets/audio/Lesson3/way.mp3",
+              },
+              {
+                id: 8,
+                name: "They",
+                type: "answer",
+              },
+            ],
+          },
+        },
+        {
+          data: {
+            tiles: [
+              {
+                id: 1,
+                name: "Waan",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waan.mp3",
+              },
+              {
+                id: 1,
+                name: "I",
+                type: "answer",
+              },
+
+              {
+                id: 2,
+                name: "Waad",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waad.mp3",
+              },
+              {
+                id: 2,
+                name: "You (singular)",
+                type: "answer",
+              },
+
+              {
+                id: 3,
+                name: "Wuu",
+                type: "label",
+                audio: "/assets/audio/Lesson3/wuu.mp3",
+              },
+              {
+                id: 3,
+                name: "He / it (masc.)",
+                type: "answer",
+              },
+
+              {
+                id: 4,
+                name: "Way",
+                type: "label",
+                audio: "/assets/audio/Lesson3/way.mp3",
+              },
+              {
+                id: 4,
+                name: "She / it (fem.)",
+                type: "answer",
+              },
+
+              {
+                id: 5,
+                name: "Waynu",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waynu.mp3",
+              },
+              {
+                id: 5,
+                name: "We (me + you + others)",
+                type: "answer",
+              },
+
+              {
+                id: 6,
+                name: "Waannu",
+                type: "label",
+                audio: "/assets/audio/Lesson3/waannu.mp3",
+              },
+              {
+                id: 6,
+                name: "We (me + my group, but NOT you)",
+                type: "answer",
+              },
+
+              {
+                id: 7,
+                name: "Waad",
+                type: "label",
+                audio: "/assets/audio/Lesson3/Waad.mp3",
+              },
+              {
+                id: 7,
+                name: "You (plural)",
+                type: "answer",
+              },
+
+              {
+                id: 8,
+                name: "Way",
+                type: "label",
+                audio: "/assets/audio/Lesson3/way.mp3",
+              },
+              {
+                id: 8,
+                name: "They",
+                type: "answer",
               },
             ],
           },
@@ -491,10 +943,111 @@ const LessonConfig = {
           },
         },
       ],
+      TileMatchingGame: [
+        {
+          data: {
+            tiles: [
+              { id: 1, name: "Wait! (to one person)", type: "label" },
+              {
+                id: 1,
+                name: "Sug!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/sug.mp3",
+              },
+              { id: 2, name: "Wait! (to a group)", type: "label" },
+              {
+                id: 2,
+                name: "Suga!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/suga.mp3",
+              },
 
+              { id: 3, name: "Bring it! (to one person)", type: "label" },
+              {
+                id: 3,
+                name: "Keen!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/keen.mp3",
+              },
+
+              { id: 4, name: "Bring it! (to a group)", type: "label" },
+              {
+                id: 4,
+                name: "Keena!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/keena.mp3",
+              },
+
+              { id: 5, name: "Go! (to one person)", type: "label" },
+              {
+                id: 5,
+                name: "Tag!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/tag.mp3",
+              },
+
+              { id: 6, name: "Go! (to a group)", type: "label" },
+              {
+                id: 6,
+                name: "Taga!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/taga.mp3",
+              },
+
+              { id: 7, name: "Stop! (to one person)", type: "label" },
+              {
+                id: 7,
+                name: "Jooji!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/jooji.mp3",
+              },
+
+              { id: 8, name: "Stop! (to a group)", type: "label" },
+              {
+                id: 8,
+                name: "Joojiya!",
+                type: "answer",
+                audio: "/assets/audio/Lesson5/joojiya.mp3",
+              },
+            ],
+          },
+        },
+      ],
+      SentenceBuilder: [
+        {
+          data: {
+            items: [
+              {
+                prompt: "Is it a dog?",
+                translation: "Ma ey baa?",
+                filler: "waa|shaah|keen",
+              },
+              {
+                prompt: "It is a dog.",
+                translation: "Waa ey.",
+                filler: "ma|baa?|sug",
+              },
+              {
+                prompt: "Is it sugar?",
+                translation: "Ma sonkor baa?",
+                filler: "tag|waa|cun",
+              },
+              {
+                prompt: "It is sugar.",
+                translation: "Waa sonkor.",
+                filler: "ma|baa?|jooji",
+              },
+              {
+                prompt: "Is it peace?",
+                translation: "Ma nabad baa?",
+                filler: "waa|fur|akhri",
+              },
+            ],
+          },
+        },
+      ],
     },
   },
-
   Lesson6: {
     id: "Shopping_Vocabulary",
     title: "Shopping",
@@ -898,6 +1451,152 @@ const LessonConfig = {
                 isInteractive: false,
                 words: [{ word: "Nabadeey.", translation: "Goodbye." }],
                 audio: "/assets/audio/Lesson6/9.mp3",
+              },
+            ],
+          },
+        },
+      ],
+      TileMatchingGame: [
+        {
+          data: {
+            tiles: [
+              { id: 1, name: "How much is it?", type: "label" },
+              {
+                id: 1,
+                name: "Waa meeqa?",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/waa_meeqa.mp3",
+              },
+
+              { id: 2, name: "Is it bread?", type: "label" },
+              {
+                id: 2,
+                name: "Ma rooti baa?",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/ma_rooti_baa.mp3",
+              },
+
+              { id: 3, name: "Is it a banana?", type: "label" },
+              {
+                id: 3,
+                name: "Ma moos baa?",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/ma_moos_baa.mp3",
+              },
+
+              { id: 4, name: "Is it sugar?", type: "label" },
+              {
+                id: 4,
+                name: "Ma sonkor baa?",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/ma_sonkor_baa.mp3",
+              },
+            ],
+          },
+        },
+        {
+          data: {
+            tiles: [
+              { id: 1, name: "It is 100.", type: "label" },
+              {
+                id: 1,
+                name: "Waa boqol.",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/waa_boqol.mp3",
+              },
+
+              { id: 2, name: "It is bread.", type: "label" },
+              {
+                id: 2,
+                name: "Waa rooti.",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/waa_rooti.mp3",
+              },
+
+              { id: 3, name: "It is money.", type: "label" },
+              {
+                id: 3,
+                name: "Waa lacag.",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/waa_lacag.mp3",
+              },
+
+              { id: 4, name: "It is perfume.", type: "label" },
+              {
+                id: 4,
+                name: "Waa barafuun.",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/waa_barafuun.mp3",
+              },
+            ],
+          },
+        },
+        {
+          data: {
+            tiles: [
+              { id: 1, name: "Bring the bread!", type: "label" },
+              {
+                id: 1,
+                name: "Rooti keen!",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/rooti_keen.mp3",
+              },
+
+              { id: 2, name: "Bring the money!", type: "label" },
+              {
+                id: 2,
+                name: "Lacag keen!",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/lacag_keen.mp3",
+              },
+
+              { id: 3, name: "Bring the sugar!", type: "label" },
+              {
+                id: 3,
+                name: "Sonkor keen!",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/sonkor_keen.mp3",
+              },
+
+              { id: 4, name: "Bring the perfume!", type: "label" },
+              {
+                id: 4,
+                name: "Barafuun keen!",
+                type: "answer",
+                audio: "/assets/audio/Lesson6/barafuun_keen.mp3",
+              },
+            ],
+          },
+        },
+      ],
+      SentenceBuilder: [
+        {
+          data: {
+            items: [
+              {
+                prompt: "Bring the bread!",
+                translation: "Rooti keen!",
+                filler: "waa|ma|moos",
+              },
+              {
+                prompt: "Is it a banana?", 
+                translation: "Ma moos baa?",
+                filler: "keen|waa|shaah",
+              },
+              {
+                prompt: "How much is it?", 
+                translation: "Waa meeqa?",
+                filler: "sonkor|ma|keen",
+              },
+              {
+                prompt: "It is 100.", 
+                translation: "Waa boqol.",
+                filler: "tag|ma|meeqa?",
+              },
+              {
+                prompt: "Bring the money!", 
+                translation: "Lacag keen!",
+                filler: "rooti|waa|sug",
               },
             ],
           },
