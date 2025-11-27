@@ -4,13 +4,15 @@ import { Text, StyleSheet, SafeAreaView } from "react-native";
 // Games
 import FlashcardLearning from "./games/FlashcardLearning.js";
 import TwoPeopleInteraction from "./games/Greetings/TwoPeopleInteraction.js";
+import TileMatchingGame from "./games/TileMatchingGame.js";
+import SentenceBuilder from "./games/SentenceBuilder.js";
 
 /* ----------------------------------- Helper functions --------------------------------------------- */
 
 // For these games, we just want to show one question per lesson. This is so each lesson shown has a different set of questions, which is chosen randomly.
-const SINGLE_ITEM_GAME = new Set(["FlashcardLearning"]);
+const SINGLE_ITEM_GAME = new Set(["FlashcardLearning", "SentenceBuilder"]);
 
-// fisher yates shuffle implemented, used for shuffling questions (randomization so players can't just memorize patterns)
+// fisher yates shuffle implemented, used for shuffling tiles and the games etc (randomization so players can't just memorize patterns)
 function shuffleArray(array) {
   // Create a local copy, so original isnt mutated
   const newArray = [...array];
@@ -47,6 +49,8 @@ function pruneToSingleItem(gameKey, singleLesson) {
     items.length === 0
   ) {
     // If any check fails, just return the object data of a particular lesson (unchanged)
+    // for example, the tilematchinggame, there is no items attribute, so it will fail
+    // and instead, we use the prunetilepairs logic instead to just select 8 tiles
     return singleLesson;
   }
 
@@ -59,6 +63,90 @@ function pruneToSingleItem(gameKey, singleLesson) {
     data: { ...singleLesson.data, items: [items[idx]] },
   };
 }
+
+// this method is just for the tile game, where we just want to randomly select 8 tiles per game
+function pruneTilePairs(singleLesson, maxTiles = 8) {
+  const tiles = singleLesson?.data?.tiles; // grab the tile data
+
+  // 1. does our lesson have a tiles attribute thats an array
+  // 2. do we have atleast 2 tiles in the tiles array of a particular lesson
+  if (!Array.isArray(tiles) || tiles.length < 2) {
+    // If any check fails, return the lesson object unchanged.
+    return singleLesson;
+  }
+
+  // Tiles pruning Logic
+  // 1. Group all tiles by their 'id', since we have question tiles and answer tile pairs
+  // {id: 1, name: "A"}, {id: 1, name: "B"} => one pair of tiles
+  const groupById = {};
+
+  // 2. loop over every tile
+  tiles.forEach((e) => {
+    const id = e.id;
+
+    // 3. Check if a pair already exists for this ID
+    if (groupById[id]) {
+      // if so, push the tile into the existing pair
+      groupById[id].push(e);
+    } else {
+      // If no, create a new array with this tile as the first item
+      groupById[id] = [e];
+    }
+  });
+
+  // 2. Filter the pairs in 'groupById', keeping only the arrays that are true pairs (length === 2).
+  const pairs = Object.values(groupById).filter((p) => p.length === 2);
+
+  /* now pairs looks like: 
+  
+  [
+    [ {id: 1, name: "A"}, {id: 1, name: "C"} ],
+    [ {id: 3, name: "D"}, {id: 3, name: "E"} ]
+  ]
+
+  */
+
+  // 3. If no pairs were found, then return the original tiles object lesson
+  if (pairs.length === 0) {
+    return singleLesson;
+  }
+
+  // 4. Calculate how many pairs to pick
+  // we want maxTiles/2 (e.g., 4 pairs for 8 tiles),
+  // but no more than we have, and at least 1.
+  const numPairsToTake = Math.max(
+    1, // incase maxTiles passed is 1, which makes the Math.min function return 0. We want atleast 1 pair..
+    Math.min(Math.floor(maxTiles / 2), pairs.length) // incase we want more pairs than we actually have in a lesson
+  );
+
+  // 5. Shuffle the pairs, take the amount we want, and flatten back into a single array
+  const prunedTiles = shuffleArray(pairs).slice(0, numPairsToTake).flat();
+
+  /*
+  
+  before: 
+  [
+    [ {id: 1, name: "A"}, {id: 1, name: "C"} ],
+    [ {id: 3, name: "D"}, {id: 3, name: "E"} ]
+  ]
+
+  after:
+
+  [
+     {id: 1, name: "A"}, {id: 1, name: "C"} ,
+     {id: 3, name: "D"}, {id: 3, name: "E"} 
+  ]
+  
+  */
+
+  return {
+    ...singleLesson,
+    data: { ...singleLesson.data, tiles: prunedTiles },
+  };
+}
+
+// Games that should NEVER be replayed, even if the user "fails"
+const NON_REPLAYABLE_GAME_TYPES = new Set(["TileMatchingGame"]);
 
 // Minimum score to be considered a "pass" on a game
 const SCORE_THRESHOLD = 1;
@@ -97,7 +185,7 @@ const LessonGames = ({ route, navigation }) => {
     }
 
     const prunedGames = []; // Array to hold all pruned game rounds for this lesson
-    // ie: 1 question per flashcardlearning game
+    // ie: 1 question per flashcardlearning game, 6 tiles per tilematchinggame, etc
 
     Object.entries(lessonData.games).forEach(([gameKey, gameData]) => {
       // .entries() transform the games object into a list of [key, value] arrays.
@@ -128,9 +216,16 @@ const LessonGames = ({ route, navigation }) => {
       gameData.forEach((variation, idx) => {
         // choose single set of questions per game (lesson)
         // (e.g., [ {question 1}, {question 2} ] => (e.g., [ {question 1} ])
-        // IF the gameKey is TwoPeopleInteraction, the pruning function just returns the full gamedata
+        // IF the gameKey is tilematching, the pruning function just returns the full gamedata
         // thus, config will hold the full gameData..(e.g., [ {question 1}, {question 2} ]
         let config = pruneToSingleItem(gameKey, variation);
+
+        // secondary pruning, if the game (lesson) is tileMatching, select 6 tiles per game instead
+        // here config holds the unaltered game data (e.g., [ {tile 1}, {tile 2}...{tile12} ])
+        if (gameKey === "TileMatchingGame") {
+          config = pruneTilePairs(config, 6);
+          // after config is processed using helper fn, (e.g., [ {tile 1},...{tile 6} ]
+        }
 
         prunedGames.push({
           gameKey: gameKey, // gameKey: "FlashcardLearning"
@@ -197,8 +292,10 @@ const LessonGames = ({ route, navigation }) => {
         // check whether a game was passed or failed based on threshold
         activeGames.forEach((game, index) => {
           const passed = updatedScores[index] >= SCORE_THRESHOLD; // check whether each lesson passed or not
+          const replayable = !NON_REPLAYABLE_GAME_TYPES.has(game.gameKey); // check whether a game can be replayed (can't fail a tilematching game)
+
           // only queue replay if user failed (and) the game is replayable
-          if (!passed) {
+          if (!passed && replayable) {
             runItBack.push(game);
           }
         });
@@ -255,6 +352,17 @@ const LessonGames = ({ route, navigation }) => {
     if (!game) return null;
 
     switch (game.gameKey) {
+      case "SentenceBuilder":
+        return (
+          <SentenceBuilder
+            items={game.data.items}
+            onNextGame={handleNextGame}
+          />
+        );
+      case "TileMatchingGame":
+        return (
+          <TileMatchingGame data={game.data} onNextGame={handleNextGame} />
+        );
       case "TwoPeopleInteraction":
         return (
           <TwoPeopleInteraction

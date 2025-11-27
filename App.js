@@ -29,7 +29,7 @@ export default function App() {
       <View style={styles.outerContainer}>
         <SafeAreaView style={styles.innerContainer}>
           <NavigationContainer theme={TransparentTheme}>
-            <Stack.Navigator initialRouteName="OnboardingScreen">
+            <Stack.Navigator initialRouteName="LearningMap">
               <Stack.Screen
                 name="OnboardingScreen"
                 component={OnboardingScreen}

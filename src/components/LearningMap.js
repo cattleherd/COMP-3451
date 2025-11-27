@@ -28,8 +28,20 @@ const scale = Math.min(
 
 const sf = (v) => Math.round(v * scale); // scaling factor for all screens
 
-const TILE_COLOUR = "#ff9f38ff";
-const TILE_BORDER_COLOUR = "#7a4d00ff";
+// set tile color based on chapter
+const sectionColors = {
+  greetings: "rgba(255, 183, 77, 1)", // Orange
+  everydayActions: "rgba(186, 255, 118, 1)", // Green
+  grammarBasics: "rgba(97, 205, 255, 1)", // Blue
+  Misc: "rgba(243, 173, 255, 1)", // Purple (fallback)
+};
+// set tile color based on chapter
+const sectionBorderColors = {
+  greetings: "rgba(160, 60, 0, 1)",
+  everydayActions: "rgba(40, 120, 10, 1)",
+  grammarBasics: "rgba(0, 60, 140, 1)",
+  Misc: "rgba(80, 0, 90, 1)",
+};
 
 const LearningMap = ({ navigation }) => {
   // create an array of the lesson objects
@@ -152,14 +164,17 @@ const LearningMap = ({ navigation }) => {
           data={allLessons}
           keyExtractor={(item) => item.flatIndex.toString()}
           renderItem={({ item }) => {
+            const tileKey = item.key || "Misc";
+            const tileColor = sectionColors[tileKey];
+            const borderColor = sectionBorderColors[tileKey];
             return (
               <View>
                 <TouchableOpacity
                   style={[
                     styles.tile,
                     {
-                      borderBottomColor: TILE_BORDER_COLOUR,
-                      backgroundColor: TILE_COLOUR,
+                      borderBottomColor: borderColor,
+                      backgroundColor: tileColor,
                     },
                   ]}
                   onPress={() => handleTilePress(item)}
@@ -305,7 +320,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.8)",
   },
   modalInnerContainer: {
-    width: PHONE_WIDTH, 
+    width: PHONE_WIDTH,
     height: PHONE_HEIGHT,
     overflow: "hidden",
   },
