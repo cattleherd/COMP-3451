@@ -128,9 +128,27 @@ export default function TwoPeopleInteraction({ scenarioData, onComplete }) {
   const slideAnim = useRef(new Animated.Value(height)).current; // animation reference for feedback modal
   const messageSlideAnim = useRef(new Animated.Value(0)).current; // animation ref for slide in messages
   const scrollRef = useRef(null); // animation reference for ScrollView (auto scroll per turn)
-
+  const nextButtonAnim = useRef(new Animated.Value(0)).current; // for the CTA animation button
   const earnedXPRef = useRef(0); // total XP for the game
   const scoredThisTurnRef = useRef(false); // guard so we add once per turn
+
+// subtle floating animation for the Next button, it runs in a loop
+useEffect(() => {
+  Animated.loop(
+    Animated.sequence([
+      Animated.timing(nextButtonAnim, {
+        toValue: -sf(8),   
+        duration: 900,
+        useNativeDriver: true,
+      }),
+      Animated.timing(nextButtonAnim, {
+        toValue: 0,        
+        duration: 900,
+        useNativeDriver: true,
+      }),
+    ])
+  ).start();
+}, [nextButtonAnim]);
 
   // Helper function to check if the current speaker is the "CPU"
   const isCPU = (e) => e.speaker === "CPU";
@@ -246,7 +264,7 @@ export default function TwoPeopleInteraction({ scenarioData, onComplete }) {
           >
             <View style={styles.feedbackHeader}>
               <FontAwesome5
-                name={isCorrect ? "check-circle" : "times-circle"} 
+                name={isCorrect ? "check-circle" : "times-circle"}
                 size={sf(24)}
                 color="#fff"
               />
@@ -416,9 +434,16 @@ export default function TwoPeopleInteraction({ scenarioData, onComplete }) {
       )}
       {/* If the turn is CPU, show the next button to advance to next turn */}
       {!scenarioData.turns[turn].isInteractive && (
-        <TouchableOpacity style={styles.nextButton} onPress={advanceToNextTurn}>
-          <Text style={styles.nextButtonText}>Next Turn</Text>
-        </TouchableOpacity>
+        <Animated.View
+          style={{ transform: [{ translateY: nextButtonAnim }] }}
+        >
+          <TouchableOpacity
+            style={styles.nextButton}
+            onPress={advanceToNextTurn}
+          >
+            <Text style={styles.nextButtonText}>Next Turn</Text>
+          </TouchableOpacity>
+        </Animated.View>
       )}
 
       {/* Feedback modal (visible when showModal true) */}
@@ -441,7 +466,7 @@ const styles = StyleSheet.create({
   },
 
   // chat area.
-  chat: { padding: sf(16), paddingBottom: sf(200) }, 
+  chat: { padding: sf(16), paddingBottom: sf(200) },
 
   // message row (avatar and chat bubble)
   row: {
@@ -452,9 +477,9 @@ const styles = StyleSheet.create({
     marginTop: sf(40),
     position: "relative",
   },
-  // rowLeft and rowRight element ordering reflected 
-  rowLeft: { alignSelf: "flex-start" }, 
-  rowRight: { alignSelf: "flex-end", flexDirection: "row-reverse" }, 
+  // rowLeft and rowRight element ordering reflected
+  rowLeft: { alignSelf: "flex-start" },
+  rowRight: { alignSelf: "flex-end", flexDirection: "row-reverse" },
 
   avatar: {
     width: sf(100),
@@ -470,11 +495,11 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     maxWidth: sf(280),
     position: "relative",
-    overflow: "visible", 
+    overflow: "visible",
   },
 
-  cpuBubble: { backgroundColor: "#fff" }, 
-  userBubble: { backgroundColor: "#dcf8c6" }, 
+  cpuBubble: { backgroundColor: "#fff" },
+  userBubble: { backgroundColor: "#dcf8c6" },
   bubbleText: {
     fontSize: sf(22),
     fontWeight: "600",
@@ -484,13 +509,13 @@ const styles = StyleSheet.create({
   playButton: {
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "center", 
+    alignSelf: "center",
     marginHorizontal: sf(5),
-    padding: sf(8), 
+    padding: sf(8),
   },
   playButtonIcon: {
     fontSize: sf(40),
-    color: "#f2860a", 
+    color: "#f2860a",
   },
 
   //wordbank
@@ -532,12 +557,12 @@ const styles = StyleSheet.create({
 
   // next button
   nextButton: {
-    backgroundColor: "#f2860a", 
+    backgroundColor: "#4acf26ff",
     paddingVertical: sf(16),
     borderRadius: sf(16),
     alignItems: "center",
     borderBottomWidth: sf(6),
-    borderBottomColor: "#d97809", 
+    borderBottomColor: "#025915ff",
     marginBottom: sf(40),
     marginHorizontal: sf(20),
   },
@@ -552,8 +577,8 @@ const styles = StyleSheet.create({
   //feedback modal
   modalOverlay: {
     flex: 1,
-    justifyContent: "flex-end", 
-    backgroundColor: "rgba(0,0,0,0.2)", 
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0,0,0,0.2)",
     alignItems: "center",
   },
   modalContent: {
@@ -587,8 +612,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
   },
-  correctBanner: { backgroundColor: "#58cc02" }, 
-  incorrectBanner: { backgroundColor: "#ff4b4b" }, 
+  correctBanner: { backgroundColor: "#58cc02" },
+  incorrectBanner: { backgroundColor: "#ff4b4b" },
   whiteBtn: { backgroundColor: "#fff" },
-
 });
