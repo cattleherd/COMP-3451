@@ -1,4 +1,4 @@
-# (COMP 3451) Project Phase 4: Prototyping 
+# (COMP 3451)
 ## SomaliLearn Language Learning App 
 
 This is a high-fidelity prototype that is mobile-first. It is best viewed on a mobile device!
