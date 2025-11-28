@@ -69,7 +69,7 @@ const AssessmentStep = ({ onFinish }) => {
   const [selected, setSelected] = useState(null);
   const [showError, setShowError] = useState(false);
 
-  const options = ["Beginner", "Intermediate", "Familiar"];
+  const options = ["None", "Some Words", "Basic Sentences"];
 
   const handleFinishPress = () => {
     if (selected) {

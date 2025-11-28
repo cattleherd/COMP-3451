@@ -29,8 +29,9 @@ export default function App() {
       <View style={styles.outerContainer}>
         <SafeAreaView style={styles.innerContainer}>
           <NavigationContainer theme={TransparentTheme}>
-            <Stack.Navigator initialRouteName="LearningMap">
+            <Stack.Navigator initialRouteName="OnboardingScreen">
               <Stack.Screen
+                options={{ headerShown: false }}
                 name="OnboardingScreen"
                 component={OnboardingScreen}
               />
